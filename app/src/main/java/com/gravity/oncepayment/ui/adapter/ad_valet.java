@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gravity.oncepayment.R;
+import com.gravity.oncepayment.model.Wallet;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
@@ -16,9 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
 
     private Context context;
+    private List<Wallet> wallets;
 
-    public  ad_valet(Context context){
+    public  ad_valet(Context context, List<Wallet> wallets){
         this.context = context;
+        this.wallets = wallets;
     }
 
 
@@ -36,7 +41,9 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull final CustomViewHolder holder, int position) {
 
+        Wallet wallet = this.wallets.get(position);
 
+        holder.txt_BagName.setText(wallet.getName());
 
         holder.txt_ViewOptions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +81,9 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
 
     @Override
     public int getItemCount() {
-        return 0;
+        if(this.wallets == null)
+            return 0;
+        return this.wallets.size();
     }
 
 

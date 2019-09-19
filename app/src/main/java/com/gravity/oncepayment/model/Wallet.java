@@ -26,4 +26,44 @@ public class Wallet {
     private long amount;
     @ColumnInfo(name = CREATED_DATE_KEY)
     private String createdDate;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
 }

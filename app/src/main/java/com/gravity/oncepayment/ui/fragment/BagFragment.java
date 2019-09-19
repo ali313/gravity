@@ -9,14 +9,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.gravity.oncepayment.R;
+import com.gravity.oncepayment.model.Wallet;
+import com.gravity.oncepayment.ui.adapter.ad_valet;
+
+import java.util.List;
 
 public class BagFragment extends Fragment
 {
 
-
-
+    private RecyclerView recyclerView;
+    private ad_valet adapter;
 
     @Nullable
     @Override
@@ -31,9 +38,22 @@ public class BagFragment extends Fragment
 
     private void init(View view){
 
-
+        recyclerView = view.findViewById(R.id.rv);
 
 
     }
+
+//    public void bindRecyclerView(){
+//
+//        List<Wallet> myWallet =
+//
+//        adapter = new ad_valet(getContext(),);
+//
+//
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+//        this.recyclerView.setLayoutManager(mLayoutManager);
+//        this.recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        this.recyclerView.setAdapter(adapter);
+//    }
 
 }

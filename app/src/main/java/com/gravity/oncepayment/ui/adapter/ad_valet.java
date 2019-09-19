@@ -41,9 +41,9 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull final CustomViewHolder holder, int position) {
 
-        Wallet wallet = this.wallets.get(position);
+        //Wallet wallet = this.wallets.get(position);
 
-        holder.txt_BagName.setText(wallet.getName());
+        holder.txt_BagName.setText("mohammad");
 
         holder.txt_ViewOptions.setOnClickListener(new View.OnClickListener() {
             @Override

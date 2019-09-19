@@ -20,13 +20,14 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
 
-        android:gravity="bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
-        
+        app:itemIconTint="@color/colorNavIcon"
+        app:itemTextColor="@color/colorNavText"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

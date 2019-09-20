@@ -112,8 +112,6 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.delete:
-                                //TODO
-                                // حذف یک کیف پول
                                 ViewModelProviders.of((FragmentActivity) context).get(WalletViewModel.class).delete(
                                         wallet
                                 );

@@ -30,6 +30,9 @@ public class Payment {
     @ColumnInfo(name = PRIORITY_KEY)
     private int priority;
 
+    public Payment() {
+    }
+
     public Payment(int walletId, long price, String description, String title, int priority) {
         this.walletId = walletId;
         this.price = price;

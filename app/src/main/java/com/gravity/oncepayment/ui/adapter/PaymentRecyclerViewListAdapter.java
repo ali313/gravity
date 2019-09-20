@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gravity.oncepayment.R;
+import com.gravity.oncepayment.Utilities.TextUtils;
 import com.gravity.oncepayment.model.pojos.Payment;
 import com.gravity.oncepayment.model.pojos.PaymentTransaction;
 import com.gravity.oncepayment.viewModel.PatmentTransactionViewModel;
@@ -34,7 +35,7 @@ import static android.view.View.VISIBLE;
 
 public class PaymentRecyclerViewListAdapter extends ListAdapter<Payment, PaymentRecyclerViewListAdapter.ViewHolder> {
 
-    private static final long REVEAL_DURATION = 1000;
+    private static final long REVEAL_DURATION = 300;
     private static final DiffUtil.ItemCallback<Payment> DIFF_CALLBACK = new DiffUtil.ItemCallback<Payment>() {
         @Override
         public boolean areItemsTheSame(@NonNull Payment oldItem, @NonNull Payment newItem) {
@@ -106,16 +107,16 @@ public class PaymentRecyclerViewListAdapter extends ListAdapter<Payment, Payment
 
         public void bindView(Payment payment, Fragment fragment) {
 
-            priceTextView.setText(String.valueOf("قیمت: " + payment.getPrice()));
+            priceTextView.setText("قیمت: " + TextUtils.toPersianNumeric(payment.getPrice()));
             titleTextView.setText(String.valueOf(payment.getTitle()));
-            priorityTextView.setText(String.valueOf("اولویت: " + payment.getPriority()));
-            descriptionTextView.setText(String.valueOf("توضیحات: " + payment.getDescription()));
+            priorityTextView.setText("اولویت: " + TextUtils.toPersianNumeric(payment.getPriority()));
+            descriptionTextView.setText("توضیحات: " + TextUtils.toPersianNumeric(payment.getDescription()));
 
             ViewModelProviders.of(fragment).get(PatmentTransactionViewModel.class).getAll(payment.getId())
                     .observe(fragment, new Observer<List<PaymentTransaction>>() {
                         @Override
                         public void onChanged(List<PaymentTransaction> paymentTransactions) {
-                            numberTextView.setText(String.valueOf("تعداد: " + paymentTransactions.size()));
+                            numberTextView.setText("تعداد: " + TextUtils.toPersianNumeric(paymentTransactions.size()));
 
                             int counter = 0;
                             for (int i = 0; i < paymentTransactions.size(); i++) {
@@ -123,7 +124,7 @@ public class PaymentRecyclerViewListAdapter extends ListAdapter<Payment, Payment
                                     counter++;
                             }
 
-                            remainedNumberTextView.setText(String.valueOf("تعداد باقی مانده: " + counter));
+                            remainedNumberTextView.setText(String.valueOf("تعداد باقی مانده: " + TextUtils .toPersianNumeric(counter)));
                         }
                     });
 
@@ -133,7 +134,7 @@ public class PaymentRecyclerViewListAdapter extends ListAdapter<Payment, Payment
 
                     int xCenter = buttonsLinearLayout.getWidth() / 2;
                     int yCenter = 0;
-                    int radius = buttonsLinearLayout.getWidth() / 2;
+                    int radius = (int) Math.hypot(buttonsLinearLayout.getWidth() / 2, buttonsLinearLayout.getHeight());
 
                     if (buttonsLinearLayout.getVisibility() == View.INVISIBLE) {
                         show(xCenter, yCenter, radius);

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.gravity.oncepayment.R;
 import com.gravity.oncepayment.Utilities.CircleView;
 import com.gravity.oncepayment.Utilities.MyBounceInterpolator;
+import com.gravity.oncepayment.Utilities.TextUtils;
 import com.gravity.oncepayment.model.pojos.Wallet;
 import com.gravity.oncepayment.ui.bottomSheet.AddWalletBottomSheet;
 import com.gravity.oncepayment.viewModel.WalletViewModel;
@@ -93,7 +94,10 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
 
 
 
-        holder.txt_amount.setText(wallet.getAmount() + "");
+        holder.txt_amount.setText(TextUtils.toPersianNumeric(wallet.getAmount()));
+
+
+
         if(wallet.getAmount() == 0){
             holder.txt_amount.setTextColor(0xFFb82525);
         }

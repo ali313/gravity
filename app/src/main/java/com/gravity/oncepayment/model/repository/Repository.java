@@ -81,4 +81,16 @@ public class Repository {
     public LiveData<List<Payment>> getAllPaymentsByWalletId(int walletId) {
         return localDataSource.getAllPaymentsByWalletId(walletId);
     }
+
+    public Wallet getWallet(int id) {
+        return localDataSource.getWallet(id);
+    }
+
+    public Payment getPayment(int id) {
+        return localDataSource.getPayment(id);
+    }
+
+    public PaymentTransaction getPaymentTransaction (int id) {
+        return localDataSource.gePaymentTransaction(id);
+    }
 }

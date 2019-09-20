@@ -25,4 +25,7 @@ public interface PaymentDao {
 
     @Query("SELECT * FROM payment_table WHERE walletId = :walletId")
     LiveData<List<Payment>> getAllByWalletId(int walletId);
+
+    @Query("SELECT * FROM payment_table WHERE id = :id")
+    Payment getById(int id);
 }

@@ -25,4 +25,7 @@ public interface WalletDao {
 
     @Query("SELECT * FROM wallet_table ORDER BY createdDate")
     LiveData<List<Wallet>> getAll();
+
+    @Query("SELECT * FROM wallet_table WHERE id = :id")
+    Wallet getById(int id);
 }

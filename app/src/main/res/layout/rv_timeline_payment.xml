@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        android:layout_weight="1"/>
+
+    <com.gravity.oncepayment.Utilities.MTextView
+        android:id="@+id/timeline_paymentPrice"
+        android:layout_width="wrap_content"
+        android:textColor="#4D4D4D"
+        android:textSize="14sp"
+        android:layout_height="wrap_content" />
+
+    <com.gravity.oncepayment.Utilities.CircleView
+        android:id="@+id/timeline_paymentColor"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="16dp"/>
+
+</LinearLayout>

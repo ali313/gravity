@@ -7,4 +7,5 @@
     <color name="colorNavText">#01294b</color>
     <color name="custom_orange">#fa9f46</color>
     <color name="usual_text_color">#696969</color>
+    <color name="timelineLineColor">#999</color>
 </resources>

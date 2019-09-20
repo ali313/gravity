@@ -1,5 +1,7 @@
 package com.gravity.oncepayment.Utilities.datetime;
 
+import com.gravity.oncepayment.Utilities.NumberUtils;
+
 import java.util.Calendar;
 
 
@@ -8,7 +10,7 @@ public class MCalendar
 {
     private static final double GREGORIAN_EPOCH = 1721425.5, ISLAMIC_EPOCH = 1948439.5, JALALI_EPOCH = 1948320.5;
 
-    private double julianDay = 0;
+    public double julianDay = 0;
 
     public static MCalendar getToday()
     {
@@ -44,6 +46,11 @@ public class MCalendar
         second = 0;
     }
 
+    public MCalendar(double jd)
+    {
+        setJulianDay(jd);
+    }
+
     private void setJulianDay(double julianDay)
     {
         this.julianDay = julianDay;
@@ -63,7 +70,21 @@ public class MCalendar
         return ((int)(Math.floor((j + 1.5))) % 7);
     }
 
-    private double getJulianDay(int type, int year, int month, int day)
+    public static double getJD(int type, String date)
+    {
+        String[] spl = date.split("/");
+        if(spl.length > 2)
+        {
+            int year = NumberUtils.toInt(spl[0], 0);
+            int month = NumberUtils.toInt(spl[1], 0);
+            int day = NumberUtils.toInt(spl[2], 0);
+
+            return MCalendar.getJD(type, year, month, day);
+        }
+        return 0;
+    }
+
+    public static double getJD(int type, int year, int month, int day)
     {
         double jd = 0;
         switch (type)
@@ -81,7 +102,7 @@ public class MCalendar
                 int mm = month <= 7 ? (month - 1) * 31 : ((month - 1) * 30) + 6;
 
                 jd = day + mm + Math.floor(((epyear * 682) - 110) / 2816.0) +
-                       (epyear - 1) * 365 + Math.floor(epbase / 2820.0) * 1029983 + (JALALI_EPOCH - 1);
+                        (epyear - 1) * 365 + Math.floor(epbase / 2820.0) * 1029983 + (JALALI_EPOCH - 1);
                 break;
 
             case MiladiType:
@@ -93,6 +114,11 @@ public class MCalendar
                 break;
         }
         return jd;
+    }
+
+    public double getJulianDay(int type, int year, int month, int day)
+    {
+        return MCalendar.getJD(type, year, month, day);
     }
 
     public MDate getMiladi()

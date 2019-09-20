@@ -23,8 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#266191"
-        app:itemIconTint="@color/colorNavIcon"
-        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@drawable/bottom_nav_colors"
+        app:itemTextColor="@drawable/bottom_nav_colors"
+        app:labelVisibilityMode="selected"
         tools:ignore="MissingConstraints" />
 
 

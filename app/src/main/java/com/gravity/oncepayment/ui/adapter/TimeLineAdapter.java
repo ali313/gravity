@@ -65,6 +65,12 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
         notifyDataSetChanged();
     }
 
+    public void clear()
+    {
+        this.items.clear();
+        notifyDataSetChanged();
+    }
+
     public int getTodayPostion()
     {
         double today = MCalendar.getToday().julianDay;
@@ -157,6 +163,9 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
 
     public List<GroupedItems> getGrouped(List<PaymentTransactionGroup> items)
     {
+        if(items == null || items.isEmpty())
+            return new ArrayList<>();
+
         Collections.sort(items, new Comparator<PaymentTransactionGroup>()
         {
             @Override

@@ -134,7 +134,7 @@ public class TimeLineFragment extends Fragment
                 PaymentTransactionGroup item = new PaymentTransactionGroup();
                 item.setPaymentDate(date);
                 item.setPriority(j);
-                item.setTitle(names[loan]);
+                item.setTitle(" " + fromJd);
                 item.setWalletColor(colors[loan]);
                 item.setWalletId(loan);
 

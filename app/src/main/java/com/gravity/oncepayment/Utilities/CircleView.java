@@ -49,7 +49,8 @@ public class CircleView extends View {
     private void init(){
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setAntiAlias(true);
-        paint.setColor(0xFF000000);
+        color = 0xFF000000;
+        paint.setColor(color);
         paint.setStrokeWidth(1);
     }
 

@@ -127,7 +127,7 @@ public class LocalDataSource {
 
         @Override
         protected Void doInBackground(Wallet... wallets) {
-            walletDao.update(wallets[0]);
+            walletDao.delete(wallets[0]);
             return null;
         }
     }
@@ -136,7 +136,7 @@ public class LocalDataSource {
 
         @Override
         protected Void doInBackground(Payment... payments) {
-            paymentDao.update(payments[0]);
+            paymentDao.delete(payments[0]);
             return null;
         }
     }
@@ -145,7 +145,7 @@ public class LocalDataSource {
 
         @Override
         protected Void doInBackground(PaymentTransaction... paymentTransactions) {
-            paymentTransactionDao.update(paymentTransactions[0]);
+            paymentTransactionDao.delete(paymentTransactions[0]);
             return null;
         }
     }

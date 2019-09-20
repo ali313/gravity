@@ -48,8 +48,7 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
 
             txt_typeOperand.setText("ویرایش");
 
-            //TODO
-            // show item from database
+            //ViewModelProviders.of(this).get(WalletViewModel.class)
         }
     }
 

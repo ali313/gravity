@@ -12,9 +12,10 @@
         android:gravity="center"
         android:textSize="19dp"
         android:background="@null"
-
+        android:id="@+id/txt_typeOperand"
         android:textColor="#000"
-        android:text="کیف پول جدید"/>
+        android:text="ثبت"
+        />
 
     <View
         android:id="@+id/view1"

@@ -2,6 +2,8 @@ package com.gravity.oncepayment.ui.bottomSheet;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +17,9 @@ import com.gravity.oncepayment.MainActivity;
 import com.gravity.oncepayment.R;
 import com.gravity.oncepayment.Utilities.CircleView;
 import com.gravity.oncepayment.model.pojos.Wallet;
+import com.gravity.oncepayment.viewModel.WalletViewModel;
 
+import androidx.lifecycle.ViewModelProviders;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class AddWalletBottomSheet extends BottomSheetDialogFragment
@@ -26,6 +30,9 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
     private EditText Name;
     private CircleView colorView;
     public int DefaultColor = 0xFF000000;
+    public boolean isAdd = true;
+    private TextView txt_typeOperand;
+    private int walletId = -1;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -36,18 +43,39 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
         View view = LayoutInflater.from(getContext()).inflate(R.layout.bottomsheet_add_wallet, null);
         dialog.setContentView(view);
         init(view);
-     //   findView(view);
+
+        if(!isAdd){
+
+            txt_typeOperand.setText("ویرایش");
+
+            //TODO
+            // show item from database
+        }
+    }
 
 
-       // this.txt_Message.setText(this.Message);
+    public void setUpdateState(){
+        this.isAdd = false;
+    }
 
+    public void setWalletId(int walletId){
+        this.walletId = walletId;
+    }
+
+    public void setAddState(){
+        this.isAdd = true;
     }
 
     private void init(View view){
         btn_insert = view.findViewById(R.id.btn_insert);
+        btn_insert.setOnClickListener(this);
+
         Name = view.findViewById(R.id.et_WalletName);
+
         colorView = view.findViewById(R.id.colorPicker);
         colorView.setOnClickListener(this);
+
+        txt_typeOperand = view.findViewById(R.id.txt_typeOperand);
     }
 
     @Override
@@ -55,17 +83,29 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
 
         switch (view.getId()) {
 
-            case R.id.et_WalletName:
-            String WalletName = Name.getText().toString();
-            //TODO
+            case R.id.btn_insert:
+
+            if(isAdd) {
+                String WalletName = Name.getText().toString();
+                int color = colorView.getColor();
+
+                Wallet wallet = new Wallet();
+                wallet.setColor(color);
+                wallet.setName(WalletName);
+
+                ViewModelProviders.of(this).get(WalletViewModel.class).insert(wallet);
+
+                this.dismiss();
+            }
+            else{
+                //TODO
                 // insert into table
+            }
+
             break;
 
             case R.id.colorPicker:
-
-                Log.d("mohammad", "mohammad");
                 OpenColorPickerDialog(false);
-
                 break;
         }
     }

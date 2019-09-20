@@ -6,12 +6,9 @@
         android:title="حذف" />
 
     <item
-        android:id="@+id/menu2"
-        android:title="Menu 2" />
+        android:id="@+id/edit"
+        android:title="ویرایش" />
 
-    <item
-        android:id="@+id/menu3"
-        android:title="Menu 3" />
 
 
 </menu>

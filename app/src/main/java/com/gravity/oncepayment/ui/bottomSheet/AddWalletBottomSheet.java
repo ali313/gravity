@@ -41,7 +41,7 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
     public void setupDialog(Dialog dialog, int style) {
         super.setupDialog(dialog, style);
 
-        //Set the custom view
+
         View view = LayoutInflater.from(getContext()).inflate(R.layout.bottomsheet_add_wallet, null);
         dialog.setContentView(view);
         init(view);
@@ -51,6 +51,8 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
             txt_typeOperand.setText("ویرایش");
 
              updateWallet = ViewModelProviders.of(this).get(WalletViewModel.class).getWallet(this.walletId);
+             this.Name.setText(updateWallet.getName());
+             this.colorView.setColor(updateWallet.getColor());
         }
     }
 

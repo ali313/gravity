@@ -14,6 +14,7 @@ import com.gravity.oncepayment.model.pojos.PaymentTransactionGroup;
 import com.gravity.oncepayment.model.pojos.Wallet;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class LocalDataSource {
 
@@ -96,6 +97,45 @@ public class LocalDataSource {
         return paymentDao.getAllByWalletId(walletId);
     }
 
+    public Wallet getWallet(int id) {
+        GetWalletAsyncTask getWalletAsyncTask = new GetWalletAsyncTask();
+        try {
+            return getWalletAsyncTask.execute(id).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public Payment getPayment(int id) {
+        GetPaymentAsyncTask getPaymentAsyncTask = new GetPaymentAsyncTask();
+        try {
+            return getPaymentAsyncTask.execute(id).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public PaymentTransaction gePaymentTransaction(int id) {
+        GetPaymentTransactionAsyncTask getPaymentTransactionAsyncTask = new GetPaymentTransactionAsyncTask();
+        try {
+            return getPaymentTransactionAsyncTask.execute(id).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     class UpdateWalletAsyncTask extends AsyncTask<Wallet, Void, Void> {
 
         @Override
@@ -174,6 +214,30 @@ public class LocalDataSource {
         protected Void doInBackground(PaymentTransaction... paymentTransactions) {
             paymentTransactionDao.insert(paymentTransactions[0]);
             return null;
+        }
+    }
+
+    class GetWalletAsyncTask extends AsyncTask<Integer, Void, Wallet> {
+
+        @Override
+        protected Wallet doInBackground(Integer... integers) {
+            return walletDao.getById(integers[0]);
+        }
+    }
+
+    class GetPaymentAsyncTask extends AsyncTask<Integer, Void, Payment> {
+
+        @Override
+        protected Payment doInBackground(Integer... integers) {
+            return paymentDao.getById(integers[0]);
+        }
+    }
+
+    class GetPaymentTransactionAsyncTask extends AsyncTask<Integer, Void, PaymentTransaction> {
+
+        @Override
+        protected PaymentTransaction doInBackground(Integer... integers) {
+            return paymentTransactionDao.getById(integers[0]);
         }
     }
 

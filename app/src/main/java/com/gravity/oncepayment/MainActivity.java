@@ -26,15 +26,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                DatabaseHelper.getInstance().paymentDao().insert(new Payment(1, 12, "hi", "wallet1", 1));
-                return null;
-            }
-        }.execute();
-
-
         init();
 
         bottomNavigationView.inflateMenu(R.menu.main_buttom_navigation);

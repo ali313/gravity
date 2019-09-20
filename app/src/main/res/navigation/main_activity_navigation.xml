@@ -14,12 +14,30 @@
             android:id="@+id/wallets_to_payments_action"
             app:destination="@id/payments" />
 
+        <action
+            android:id="@+id/wallets_to_timeline"
+            app:destination="@id/timeline"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
     </fragment>
 
     <fragment
         android:id="@+id/timeline"
         android:name="com.gravity.oncepayment.ui.fragment.TimeLineFragment"
-        tools:layout="@layout/fragment_timeline" />
+        tools:layout="@layout/fragment_timeline">
+
+        <action
+            android:id="@+id/timeline_to_wallets"
+            app:destination="@id/wallets"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/payments"

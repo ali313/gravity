@@ -26,4 +26,7 @@ public interface PaymentTransactionDao {
 
     @Query("SELECT * FROM payment_transaction WHERE parentId = :parentId")
     LiveData<List<PaymentTransaction>> getAll(int parentId);
+
+    @Query("SELECT * FROM payment_table WHERE id = :id")
+    PaymentTransaction getById(int id);
 }

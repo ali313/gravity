@@ -32,4 +32,8 @@ public class WalletViewModel extends AndroidViewModel {
     public LiveData<List<Wallet>> getAll() {
         return Repository.getInstance().getAllWallets();
     }
+
+    public Wallet getWallet(int id) {
+        return Repository.getInstance().getWallet(id);
+    }
 }

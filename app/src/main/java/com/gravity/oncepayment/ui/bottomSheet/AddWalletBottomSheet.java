@@ -90,6 +90,7 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
 
                 String WalletName = Name.getText().toString();
                 int color = colorView.getColor();
+                String createdDate = ""; //TODO
 
 
                 if(!Name.getText().toString().isEmpty()) {
@@ -99,6 +100,7 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
                         Wallet wallet = new Wallet();
                         wallet.setColor(color);
                         wallet.setName(WalletName);
+                        wallet.setCreatedDate(createdDate);
 
                         ViewModelProviders.of(this).get(WalletViewModel.class).insert(wallet);
 

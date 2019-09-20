@@ -1,7 +1,6 @@
 package com.gravity.oncepayment.ui.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,18 +18,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.gravity.oncepayment.R;
 import com.gravity.oncepayment.model.pojos.Wallet;
-import com.gravity.oncepayment.ui.adapter.ad_valet;
+import com.gravity.oncepayment.ui.adapter.WalletRecyclerViewListAdapter;
 import com.gravity.oncepayment.ui.bottomSheet.AddWalletBottomSheet;
 import com.gravity.oncepayment.viewModel.WalletViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BagFragment extends Fragment
-implements View.OnClickListener {
+public class WalletFragment extends Fragment
+        implements View.OnClickListener {
 
     private RecyclerView recyclerView;
-    private ad_valet adapter;
+    private WalletRecyclerViewListAdapter adapter;
     private FloatingActionButton floatingActionButton;
 
     @Nullable
@@ -49,22 +47,10 @@ implements View.OnClickListener {
         recyclerView = view.findViewById(R.id.rv);
         floatingActionButton = view.findViewById(R.id.fab_newWallet);
         floatingActionButton.setOnClickListener(this);
-
     }
 
     public void bindRecyclerView() {
-  //      Wallet wallet = new Wallet();
-//        List<Wallet> myWallet = new ArrayList<>();
-//
-//        myWallet.add(wallet);
-//        myWallet.add(wallet);
-//        myWallet.add(wallet);
-//        myWallet.add(wallet);
-//        myWallet.add(wallet);
-//        myWallet.add(wallet);
-//
-//        adapter = new ad_valet(getContext(), myWallet);
-        adapter = new ad_valet(getContext());
+        adapter = new WalletRecyclerViewListAdapter(this);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -73,26 +59,22 @@ implements View.OnClickListener {
         ViewModelProviders.of(this).get(WalletViewModel.class).getAll().observe(this, new Observer<List<Wallet>>() {
             @Override
             public void onChanged(List<Wallet> wallets) {
-                if(wallets != null) {
-
-                    adapter.setWallets(wallets);
-
+                if (wallets != null) {
+                    adapter.submitList(wallets);
                 }
             }
         });
-
-
     }
 
     @Override
     public void onClick(View view) {
 
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.fab_newWallet:
 
                 AddWalletBottomSheet fragment = new AddWalletBottomSheet();
-                fragment.show(((FragmentActivity)getContext()).getSupportFragmentManager(), "TAG");
+                fragment.show(((FragmentActivity) getContext()).getSupportFragmentManager(), "TAG");
                 break;
         }
     }

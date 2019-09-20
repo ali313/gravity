@@ -49,31 +49,16 @@ public class MainActivity extends AppCompatActivity
         switch (menuItem.getItemId()) {
 
             case R.id.timeline:
-//                loadFragment(new TimeLineFragment());
                 break;
 
             case R.id.reports:
-//                loadFragment(new BagFragment());
                 break;
 
             case R.id.wallets:
-//                loadFragment(new BagFragment());
                 break;
         }
 
 
         return false;
     }
-
-//    private boolean loadFragment(Fragment fragment) {
-//        //switching fragment
-//        if (fragment != null) {
-//            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.fragmentContainer, fragment)
-//                    .commit();
-//            return true;
-//        }
-//        return false;
-//    }
 }

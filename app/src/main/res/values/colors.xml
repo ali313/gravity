@@ -8,4 +8,10 @@
     <color name="custom_orange">#fa9f46</color>
     <color name="usual_text_color">#696969</color>
     <color name="timelineLineColor">#999</color>
+
+
+    <color name="white">#fff</color>
+    <!--@android:color/holo_red_light-->
+    <color name="selectedNavBarColor">#1E4D73</color>
+    <color name="gray">#777</color>
 </resources>

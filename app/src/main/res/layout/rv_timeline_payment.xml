@@ -18,6 +18,9 @@
         android:layout_width="wrap_content"
         android:textColor="#4D4D4D"
         android:textSize="14sp"
+        android:lines="1"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:layout_height="wrap_content" />
 
     <com.gravity.oncepayment.Utilities.CircleView
@@ -25,6 +28,6 @@
         android:layout_width="8dp"
         android:layout_height="8dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="6dp"/>
 
 </LinearLayout>

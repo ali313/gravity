@@ -38,6 +38,12 @@ public class VerticalTextView extends AppCompatTextView
         setTypeface(tf);
     }
 
+    public void setTopDown(boolean topDown)
+    {
+        this.topDown = topDown;
+        invalidate();
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(heightMeasureSpec, widthMeasureSpec);

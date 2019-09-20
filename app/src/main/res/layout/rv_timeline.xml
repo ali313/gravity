@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -8,6 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:minHeight="80dp"
+        android:gravity="center_vertical"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@id/timeline_line">
 
@@ -18,22 +24,53 @@
         android:layout_width="1px"
         android:background="#eee"
         android:layout_height="match_parent"
-        android:layout_toLeftOf="@id/timeline_date"/>
+        android:layout_toLeftOf="@id/timeline_dateContainer"/>
 
-    <com.gravity.oncepayment.Utilities.VerticalTextView
-        android:id="@+id/timeline_date"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:background="#135C0E"
-        android:gravity="center"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+    <LinearLayout
+        android:id="@+id/timeline_dateContainer"
+        android:layout_width="85dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:includeFontPadding="false"
-        android:textColor="#666"
-        android:backgroundTint="#f8f8f8"
         android:layout_alignParentBottom="true"
-        android:textSize="15sp"/>
+        android:layout_alignTop="@+id/timeline_items"
+        android:layout_alignBottom="@id/timeline_items"
+        android:orientation="vertical">
+
+        <com.gravity.oncepayment.Utilities.LineView
+            android:layout_width="@dimen/timelineLineWidth"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:dashLength="@dimen/timelineLineDashWidth"
+            app:dashGap="@dimen/timelineLineDashGap"
+            app:color="@color/timelineLineColor"
+            app:dashThickness="@dimen/timelineLineWidth"
+            app:orientation="vertical"/>
+
+        <com.gravity.oncepayment.Utilities.MTextView
+
+            android:id="@+id/timeline_date"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/date_back"
+            android:gravity="center"
+            android:textAlignment="center"
+
+            android:includeFontPadding="false"
+            android:textColor="#888"
+            android:textSize="14sp" />
+
+        <com.gravity.oncepayment.Utilities.LineView
+            android:layout_width="@dimen/timelineLineWidth"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:dashLength="@dimen/timelineLineDashWidth"
+            app:dashGap="@dimen/timelineLineDashGap"
+            app:color="@color/timelineLineColor"
+            app:dashThickness="@dimen/timelineLineWidth"
+            app:orientation="vertical"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

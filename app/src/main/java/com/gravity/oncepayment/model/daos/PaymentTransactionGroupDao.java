@@ -19,6 +19,7 @@ public interface PaymentTransactionGroupDao {
             Payment.PAYMENT_TABLE_NAME + "." + Payment.WALLET_ID_KEY + ", " +
             Payment.PAYMENT_TABLE_NAME + "." + Payment.TITLE_KEY + ", " +
             Payment.PAYMENT_TABLE_NAME + "." + Payment.PRIORITY_KEY + ", " +
+            Payment.PAYMENT_TABLE_NAME + "." + Payment.PRICE_KEY + ", " +
             Wallet.WALLET_TABLE_NAME + "." + Wallet.COLOR_KEY +
             " From " + PaymentTransaction.PAYMENT_TRANSACTION_TABLE_NAME +
             " join " + Payment.PAYMENT_TABLE_NAME + " on "  + Payment.PAYMENT_TABLE_NAME + "." + Payment.ID_KEY +
@@ -40,6 +41,7 @@ public interface PaymentTransactionGroupDao {
             Payment.PAYMENT_TABLE_NAME + "." + Payment.WALLET_ID_KEY + ", " +
             Payment.PAYMENT_TABLE_NAME + "." + Payment.TITLE_KEY + ", " +
             Payment.PAYMENT_TABLE_NAME + "." + Payment.PRIORITY_KEY + ", " +
+            Payment.PAYMENT_TABLE_NAME + "." + Payment.PRICE_KEY + ", " +
             Wallet.WALLET_TABLE_NAME + "." + Wallet.COLOR_KEY +
             " From " + PaymentTransaction.PAYMENT_TRANSACTION_TABLE_NAME +
             " join " + Payment.PAYMENT_TABLE_NAME + " on "  + Payment.PAYMENT_TABLE_NAME + "." + Payment.ID_KEY +

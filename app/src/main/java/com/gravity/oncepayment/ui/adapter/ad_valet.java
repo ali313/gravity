@@ -38,6 +38,10 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
         return new CustomViewHolder(root);
     }
 
+    public void setWallets(List<Wallet> wallets) {
+        this.wallets = wallets;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull final CustomViewHolder holder, int position) {
 
@@ -78,6 +82,7 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
         });
 
     }
+
 
     @Override
     public int getItemCount() {

@@ -46,22 +46,32 @@ public class BagFragment extends Fragment {
     }
 
     public void bindRecyclerView() {
-        Wallet wallet = new Wallet();
-        List<Wallet> myWallet = new ArrayList<>();
+//        Wallet wallet = new Wallet();
+//        List<Wallet> myWallet = new ArrayList<>();
+//
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
 
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-
-        adapter = new ad_valet(getContext(), myWallet);
+        adapter = new ad_valet(getContext(), new ArrayList<Wallet>());
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
-        this.recyclerView.setLayoutManager(mLayoutManager);
-        this.recyclerView.setItemAnimator(new DefaultItemAnimator());
-        this.recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+
+        ViewModelProviders.of(this).get(WalletViewModel.class).getAll().observe(this, new Observer<List<Wallet>>() {
+            @Override
+            public void onChanged(List<Wallet> wallets) {
+               adapter.setWallets(wallets);
+               adapter.notifyDataSetChanged();
+            }
+        });
+
+
     }
 
 }

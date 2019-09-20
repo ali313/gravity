@@ -5,12 +5,17 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.gravity.oncepayment.R;
+import com.gravity.oncepayment.Utilities.CircleView;
+import com.gravity.oncepayment.Utilities.MyBounceInterpolator;
 import com.gravity.oncepayment.model.pojos.Wallet;
 
 import java.util.List;
+import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
@@ -20,10 +25,13 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
 
     private Context context;
     private List<Wallet> wallets;
+    Random r ;
 
     public  ad_valet(Context context, List<Wallet> wallets){
         this.context = context;
         this.wallets = wallets;
+        r = new Random();
+        r.setSeed(System.currentTimeMillis());
     }
 
 
@@ -42,12 +50,26 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
         this.wallets = wallets;
     }
 
+    private void setAnimation(View viewToAnimate, int position)
+    {
+        int lastPosition=0;
+
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
+    }
+
     @Override
     public void onBindViewHolder(@NonNull final CustomViewHolder holder, int position) {
 
-        Wallet wallet = this.wallets.get(position);
+        final Wallet wallet = this.wallets.get(position);
 
         holder.txt_BagName.setText("کیف پول");
+//        holder.view_Color.setColor(wallet.getColor());
 
         holder.txt_ViewOptions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +84,7 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.menu1:
+                            case R.id.delete:
                                 //handle menu1 click
                                 break;
                             case R.id.menu2:
@@ -81,6 +103,21 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
             }
         });
 
+
+        holder.itemView.setScaleX(0.80f);
+        holder.itemView.setScaleY(0.80f);
+        holder.itemView.setAlpha(0);
+
+        holder.itemView.animate()
+                .setInterpolator(new MyBounceInterpolator(0.15, 15))
+                .setDuration(800)
+                .scaleX(1).scaleY(1)
+                .alpha(1)
+                .setStartDelay(r.nextInt(300));
+
+
+//        setAnimation(holder.itemView, position);
+
     }
 
 
@@ -97,6 +134,7 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
         public TextView txt_ViewOptions, txt_BagName, txt_amount,txt_trasactionNum;
+        public CircleView view_Color;
         private Context context;
 
         public CustomViewHolder(View itemView) {
@@ -107,6 +145,7 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
         private void findView(){
             txt_ViewOptions = itemView.findViewById(R.id.txt_ViewOptions);
             txt_BagName = itemView.findViewById(R.id.txt_WalletName);
+            view_Color = itemView.findViewById(R.id.wallet_Color);
 //            txt_amount = itemView.findViewById(R.id.txt_amount);
 //            txt_trasactionNum = itemView.findViewById(R.id.txt_trasactionNum);
         }

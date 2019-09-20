@@ -15,8 +15,8 @@ import com.gravity.oncepayment.ui.fragment.BagFragment;
 import com.gravity.oncepayment.model.repository.dataSource.localDataSourse.DatabaseHelper;
 import com.gravity.oncepayment.model.pojos.Payment;
 
-public class MainActivity extends AppCompatActivity {
 public class MainActivity extends AppCompatActivity
+
     implements BottomNavigationView.OnNavigationItemSelectedListener
 {
 

@@ -34,12 +34,21 @@
                             android:layout_centerHorizontal="true"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:paddingTop="7dp"
+                            android:paddingTop="5dp"
 
                             android:text="&#8942;"
                             android:textAppearance="?android:textAppearanceLarge" />
 
 
+            <com.gravity.oncepayment.Utilities.CircleView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/wallet_Color"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="8dp"
+                ></com.gravity.oncepayment.Utilities.CircleView>
 
 
             <com.gravity.oncepayment.Utilities.MTextView
@@ -53,15 +62,16 @@
 
                 android:textSize="14dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="32dp"
                 android:text="کیف پول اول">
 
             </com.gravity.oncepayment.Utilities.MTextView>
 
             <View
+                android:id="@+id/view_Color"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#0f0"
+                android:layout_height="1dp"
+                android:background="#EEE"
                 android:layout_marginTop="8dp"
                 android:layout_below="@+id/txt_WalletName">
 
@@ -74,7 +84,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/txt_WalletName"
                             android:textSize="13dp"
-                            android:layout_marginTop="13dp"
+                            android:layout_marginTop="15dp"
                             android:gravity="center"
                             android:text="موجودی">
 

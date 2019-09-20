@@ -1,6 +1,7 @@
 package com.gravity.oncepayment.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -18,12 +20,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.gravity.oncepayment.R;
 import com.gravity.oncepayment.model.pojos.Wallet;
 import com.gravity.oncepayment.ui.adapter.ad_valet;
+import com.gravity.oncepayment.ui.bottomSheet.AddWalletBottomSheet;
 import com.gravity.oncepayment.viewModel.WalletViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BagFragment extends Fragment {
+public class BagFragment extends Fragment
+implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     private ad_valet adapter;
@@ -44,7 +48,7 @@ public class BagFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.rv);
         floatingActionButton = view.findViewById(R.id.fab_newWallet);
-
+        floatingActionButton.setOnClickListener(this);
 
     }
 
@@ -77,4 +81,16 @@ public class BagFragment extends Fragment {
 
     }
 
+    @Override
+    public void onClick(View view) {
+
+        Log.d("mohammad", "mohammad");
+        switch (view.getId()){
+            case R.id.fab_newWallet:
+
+                AddWalletBottomSheet fragment = new AddWalletBottomSheet();
+                fragment.show(((FragmentActivity)getContext()).getSupportFragmentManager(), "TAG");
+                break;
+        }
+    }
 }

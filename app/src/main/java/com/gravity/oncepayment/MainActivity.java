@@ -14,7 +14,13 @@ import com.gravity.oncepayment.model.repository.dataSource.localDataSourse.Datab
 import com.gravity.oncepayment.ui.fragment.BagFragment;
 
 public class MainActivity extends AppCompatActivity
+<<<<<<< HEAD
         implements BottomNavigationView.OnNavigationItemSelectedListener {
+=======
+
+    implements BottomNavigationView.OnNavigationItemSelectedListener
+{
+>>>>>>> b06376a0ec21eae28afe933c4f2aafbe9a00b5d6
 
     private BottomNavigationView bottomNavigationView;
 
@@ -37,9 +43,16 @@ public class MainActivity extends AppCompatActivity
         bottomNavigationView.inflateMenu(R.menu.main_buttom_navigation);
 
 
+<<<<<<< HEAD
         Fragment fragment = new BagFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer
                 , fragment).commit();
+=======
+
+        loadFragment(new BagFragment());
+//        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer
+//        ,fragment).commit();
+>>>>>>> b06376a0ec21eae28afe933c4f2aafbe9a00b5d6
     }
 
     public void init() {
@@ -54,16 +67,31 @@ public class MainActivity extends AppCompatActivity
         switch (menuItem.getItemId()) {
 
             case R.id.Payments:
+                loadFragment(new BagFragment());
                 break;
 
             case R.id.Report:
+                loadFragment(new BagFragment());
                 break;
 
             case R.id.Wallets:
+                loadFragment(new BagFragment());
                 break;
         }
 
 
+        return false;
+    }
+
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, fragment)
+                    .commit();
+            return true;
+        }
         return false;
     }
 }

@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/Wallets"
-        android:title="کیف پول" />
 
     <item
-        android:id="@+id/Payments"
-        android:title="پرداختی ها" />
-
-    <item
-
+        android:icon="@mipmap/ic_launcher"
         android:id="@+id/Report"
         android:title="گزارشات" />
 
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/Payments"
+        android:title="پرداختی ها" />
+
+
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/Wallets"
+        android:title="کیف پول" />
 
 </menu>

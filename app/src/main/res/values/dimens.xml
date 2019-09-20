@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="timelineLineDashGap">2dp</dimen>
+    <dimen name="timelineLineDashWidth">2dp</dimen>
+    <dimen name="timelineLineWidth">1px</dimen>
+</resources>

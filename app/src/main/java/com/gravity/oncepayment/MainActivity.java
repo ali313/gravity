@@ -14,13 +14,7 @@ import com.gravity.oncepayment.model.repository.dataSource.localDataSourse.Datab
 import com.gravity.oncepayment.ui.fragment.BagFragment;
 
 public class MainActivity extends AppCompatActivity
-<<<<<<< HEAD
         implements BottomNavigationView.OnNavigationItemSelectedListener {
-=======
-
-    implements BottomNavigationView.OnNavigationItemSelectedListener
-{
->>>>>>> b06376a0ec21eae28afe933c4f2aafbe9a00b5d6
 
     private BottomNavigationView bottomNavigationView;
 
@@ -43,16 +37,13 @@ public class MainActivity extends AppCompatActivity
         bottomNavigationView.inflateMenu(R.menu.main_buttom_navigation);
 
 
-<<<<<<< HEAD
         Fragment fragment = new BagFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer
                 , fragment).commit();
-=======
 
         loadFragment(new BagFragment());
 //        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer
 //        ,fragment).commit();
->>>>>>> b06376a0ec21eae28afe933c4f2aafbe9a00b5d6
     }
 
     public void init() {

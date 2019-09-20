@@ -8,7 +8,13 @@
     <fragment
         android:id="@+id/wallets"
         android:name="com.gravity.oncepayment.ui.fragment.BagFragment"
-        tools:layout="@layout/fragment_bag" />
+        tools:layout="@layout/fragment_bag">
+
+        <action
+            android:id="@+id/wallets_to_payments_action"
+            app:destination="@id/payments" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/timeline"
@@ -16,8 +22,14 @@
         tools:layout="@layout/fragment_timeline" />
 
     <fragment
-        android:id="@+id/Payments"
+        android:id="@+id/payments"
         android:name="com.gravity.oncepayment.ui.fragment.PaymentFragment"
-        tools:layout="@layout/payment_fragment_layout" />
+        tools:layout="@layout/payment_fragment_layout">
+
+        <argument
+            android:name="walletId"
+            app:argType="integer" />
+
+    </fragment>
 
 </navigation>

@@ -96,4 +96,12 @@ public class PaymentTransactionGroup {
     public void setWalletColor(int walletColor) {
         this.walletColor = walletColor;
     }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
 }

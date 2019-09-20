@@ -77,4 +77,8 @@ public class Repository {
     public LiveData<List<PaymentTransaction>> getAllTransactionsByParentId(int parentId) {
         return localDataSource.getAllTransactionsByParentId(parentId);
     }
+
+    public LiveData<List<Payment>> getAllPaymentsByWalletId(int walletId) {
+        return localDataSource.getAllPaymentsByWalletId(walletId);
+    }
 }

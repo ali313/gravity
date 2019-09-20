@@ -1,24 +1,20 @@
 package com.gravity.oncepayment;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.gravity.oncepayment.model.pojos.Payment;
+import com.gravity.oncepayment.model.repository.dataSource.localDataSourse.DatabaseHelper;
 import com.gravity.oncepayment.ui.fragment.BagFragment;
 
-import com.gravity.oncepayment.model.repository.dataSource.localDataSourse.DatabaseHelper;
-import com.gravity.oncepayment.model.pojos.Payment;
-
-public class MainActivity extends AppCompatActivity {
 public class MainActivity extends AppCompatActivity
-    implements BottomNavigationView.OnNavigationItemSelectedListener
-{
+        implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
 
@@ -43,10 +39,10 @@ public class MainActivity extends AppCompatActivity
 
         Fragment fragment = new BagFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer
-        ,fragment).commit();
+                , fragment).commit();
     }
 
-    public  void init(){
+    public void init() {
         bottomNavigationView = findViewById(R.id.bottomNavigation);
 
 
@@ -55,7 +51,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
 
             case R.id.Payments:
                 break;

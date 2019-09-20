@@ -22,6 +22,8 @@ public class PaymentTransactionGroup {
     private int walletId;
     @ColumnInfo(name = Wallet.COLOR_KEY)
     private int walletColor;
+    @ColumnInfo(name = Payment.PRICE_KEY)
+    private long price;
 
     public int getId() {
         return id;

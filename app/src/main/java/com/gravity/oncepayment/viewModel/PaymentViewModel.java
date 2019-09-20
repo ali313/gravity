@@ -4,9 +4,12 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import com.gravity.oncepayment.model.pojos.Payment;
 import com.gravity.oncepayment.model.repository.Repository;
+
+import java.util.List;
 
 public class PaymentViewModel extends AndroidViewModel {
 
@@ -24,5 +27,9 @@ public class PaymentViewModel extends AndroidViewModel {
 
     public void insert(Payment payment) {
         Repository.getInstance().insert(payment);
+    }
+
+    public LiveData<List<Payment>> getAll(int walletId) {
+        return Repository.getInstance().getAllPaymentsByWalletId(walletId);
     }
 }

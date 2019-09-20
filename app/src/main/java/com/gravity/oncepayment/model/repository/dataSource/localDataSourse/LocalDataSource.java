@@ -92,6 +92,10 @@ public class LocalDataSource {
         return paymentTransactionDao.getAll(parentId);
     }
 
+    public LiveData<List<Payment>> getAllPaymentsByWalletId(int walletId) {
+        return paymentDao.getAllByWalletId(walletId);
+    }
+
     class UpdateWalletAsyncTask extends AsyncTask<Wallet, Void, Void> {
 
         @Override

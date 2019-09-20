@@ -1,4 +1,4 @@
-package com.gravity.oncepayment.model;
+package com.gravity.oncepayment.model.pojos;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

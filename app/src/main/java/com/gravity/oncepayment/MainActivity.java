@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -11,6 +12,10 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gravity.oncepayment.ui.fragment.BagFragment;
 
+import com.gravity.oncepayment.model.repository.dataSource.localDataSourse.DatabaseHelper;
+import com.gravity.oncepayment.model.pojos.Payment;
+
+public class MainActivity extends AppCompatActivity {
 public class MainActivity extends AppCompatActivity
     implements BottomNavigationView.OnNavigationItemSelectedListener
 {
@@ -18,10 +23,17 @@ public class MainActivity extends AppCompatActivity
     private BottomNavigationView bottomNavigationView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                DatabaseHelper.getInstance().paymentDao().insert(new Payment(1, 12, "hi", "wallet1", 1));
+                return null;
+            }
+        }.execute();
 
 
         init();

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gravity.oncepayment.R;
-import com.gravity.oncepayment.model.Wallet;
+import com.gravity.oncepayment.model.pojos.Wallet;
 
 import java.util.List;
 

@@ -30,7 +30,7 @@ public class MTextView extends AppCompatTextView
 
     public void init(){
 
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/font.ttf");
+        Typeface tf = FontCache.get(getContext(), FontCache.NASIM);
         setTypeface(tf);
     }
 }

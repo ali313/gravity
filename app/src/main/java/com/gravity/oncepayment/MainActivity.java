@@ -12,9 +12,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gravity.oncepayment.model.pojos.Payment;
 import com.gravity.oncepayment.model.repository.dataSource.localDataSourse.DatabaseHelper;
 import com.gravity.oncepayment.ui.fragment.BagFragment;
+import com.gravity.oncepayment.ui.fragment.TimeLineFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    implements BottomNavigationView.OnNavigationItemSelectedListener
+{
 
     private BottomNavigationView bottomNavigationView;
 
@@ -36,14 +39,7 @@ public class MainActivity extends AppCompatActivity
 
         bottomNavigationView.inflateMenu(R.menu.main_buttom_navigation);
 
-
-        Fragment fragment = new BagFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer
-                , fragment).commit();
-
         loadFragment(new BagFragment());
-//        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer
-//        ,fragment).commit();
     }
 
     public void init() {
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         switch (menuItem.getItemId()) {
 
             case R.id.Payments:
-                loadFragment(new BagFragment());
+                loadFragment(new TimeLineFragment());
                 break;
 
             case R.id.Report:

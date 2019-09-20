@@ -13,12 +13,16 @@ import com.gravity.oncepayment.R;
 import com.gravity.oncepayment.Utilities.CircleView;
 import com.gravity.oncepayment.Utilities.MyBounceInterpolator;
 import com.gravity.oncepayment.model.pojos.Wallet;
+import com.gravity.oncepayment.ui.bottomSheet.AddWalletBottomSheet;
 
 import java.util.List;
 import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
@@ -30,6 +34,12 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
     public  ad_valet(Context context, List<Wallet> wallets){
         this.context = context;
         this.wallets = wallets;
+        r = new Random();
+        r.setSeed(System.currentTimeMillis());
+    }
+
+    public ad_valet(Context context){
+        this.context = context;
         r = new Random();
         r.setSeed(System.currentTimeMillis());
     }
@@ -47,7 +57,10 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
     }
 
     public void setWallets(List<Wallet> wallets) {
-        this.wallets = wallets;
+        if(wallets != null) {
+            this.wallets = wallets;
+            notifyDataSetChanged();
+        }
     }
 
     private void setAnimation(View viewToAnimate, int position)
@@ -68,8 +81,21 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
 
         final Wallet wallet = this.wallets.get(position);
 
-        holder.txt_BagName.setText("کیف پول");
-//        holder.view_Color.setColor(wallet.getColor());
+
+        if (wallet.getName().length() > 16)
+            holder.txt_BagName.setText(wallet.getName().substring(0, 14) + "...");
+        else
+            holder.txt_BagName.setText(wallet.getName());
+        holder.txt_BagName.setTextColor(wallet.getColor());
+
+        holder.view_Color.setColor(wallet.getColor());
+
+
+
+        holder.txt_amount.setText(wallet.getAmount() + "");
+        if(wallet.getAmount() == 0){
+            holder.txt_amount.setTextColor(0xFFb82525);
+        }
 
         holder.txt_ViewOptions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,13 +111,15 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.delete:
-                                //handle menu1 click
+                                //TODO
+                                // delete item from Wallet
+                                //ViewModelProviders.of( context).get(Wallet.class)
                                 break;
-                            case R.id.menu2:
-                                //handle menu2 click
-                                break;
-                            case R.id.menu3:
-                                //handle menu3 click
+                            case R.id.edit:
+                                AddWalletBottomSheet fragment = new AddWalletBottomSheet();
+                                fragment.setUpdateState();
+                                fragment.setWalletId(wallet.getId());
+                                fragment.show(((FragmentActivity)context).getSupportFragmentManager(), "TAG");
                                 break;
                         }
                         return false;
@@ -115,8 +143,6 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
                 .alpha(1)
                 .setStartDelay(r.nextInt(300));
 
-
-//        setAnimation(holder.itemView, position);
 
     }
 
@@ -146,7 +172,7 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
             txt_ViewOptions = itemView.findViewById(R.id.txt_ViewOptions);
             txt_BagName = itemView.findViewById(R.id.txt_WalletName);
             view_Color = itemView.findViewById(R.id.wallet_Color);
-//            txt_amount = itemView.findViewById(R.id.txt_amount);
+            txt_amount = itemView.findViewById(R.id.txt_amount);
 //            txt_trasactionNum = itemView.findViewById(R.id.txt_trasactionNum);
         }
     }

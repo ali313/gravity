@@ -53,30 +53,33 @@ implements View.OnClickListener {
     }
 
     public void bindRecyclerView() {
-        Wallet wallet = new Wallet();
-        List<Wallet> myWallet = new ArrayList<>();
-
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-        myWallet.add(wallet);
-
-        adapter = new ad_valet(getContext(), myWallet);
-
+  //      Wallet wallet = new Wallet();
+//        List<Wallet> myWallet = new ArrayList<>();
+//
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
+//        myWallet.add(wallet);
+//
+//        adapter = new ad_valet(getContext(), myWallet);
+        adapter = new ad_valet(getContext());
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
-//        ViewModelProviders.of(this).get(WalletViewModel.class).getAll().observe(this, new Observer<List<Wallet>>() {
-//            @Override
-//            public void onChanged(List<Wallet> wallets) {
-//               adapter.setWallets(wallets);
-//               adapter.notifyDataSetChanged();
-//            }
-//        });
+        ViewModelProviders.of(this).get(WalletViewModel.class).getAll().observe(this, new Observer<List<Wallet>>() {
+            @Override
+            public void onChanged(List<Wallet> wallets) {
+                if(wallets != null) {
+                    Log.d("mohammad", "mohammad1");
+                    adapter.setWallets(wallets);
+
+                }
+            }
+        });
 
 
     }
@@ -84,7 +87,7 @@ implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        Log.d("mohammad", "mohammad");
+
         switch (view.getId()){
             case R.id.fab_newWallet:
 

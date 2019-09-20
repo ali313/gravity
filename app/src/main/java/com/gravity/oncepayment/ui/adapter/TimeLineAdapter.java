@@ -104,21 +104,24 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLi
     {
         LinearLayout ctr_items;
         TextView ctr_date;
+        View ctr_leftBar;
 
         public TimeLineViewHolder(@NonNull View itemView)
         {
             super(itemView);
             ctr_items = itemView.findViewById(R.id.timeline_items);
             ctr_date = itemView.findViewById(R.id.timeline_date);
+            ctr_leftBar = itemView.findViewById(R.id.timeline_leftBar);
         }
 
         public void bind(GroupedItems item, int position)
         {
             ctr_date.setText(TextUtils.toPersianNumeric(item.getDate()).replace(" ", "\n"));
             itemView.setBackgroundColor((position % 2) == 1 ? 0xfff2f2f2 : 0xfff8f8f8);
+            ctr_leftBar.setBackgroundColor((position % 2) == 1 ? 0x308DCADD : 0x30CFC777);
 //            ctr_date.setTopDown(false);
 
-
+            ctr_items.removeAllViews();
             LayoutInflater inflater = LayoutInflater.from(itemView.getContext());
 
             for(PaymentTransactionGroup grp : item.items)

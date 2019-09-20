@@ -26,6 +26,17 @@
         android:layout_height="match_parent"
         android:layout_toLeftOf="@id/timeline_dateContainer"/>
 
+    <View
+        android:id="@+id/timeline_leftBar"
+        android:layout_width="42dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/timeline_items"
+        android:layout_alignBottom="@id/timeline_items"
+        android:background="#eee"/>
+
     <LinearLayout
         android:id="@+id/timeline_dateContainer"
         android:layout_width="85dp"

@@ -3,11 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    
+
     android:layout_height="wrap_content">
-
-
-
 
 
 
@@ -58,14 +55,41 @@
             android:layout_height="60dp">
 
             <com.gravity.oncepayment.Utilities.CircleView
-                android:id="@+id/colorPicker"
+                android:id="@+id/colorPicker1"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="8dp"
+
+                ></com.gravity.oncepayment.Utilities.CircleView>
+
+            <com.gravity.oncepayment.Utilities.CircleView
+                android:id="@+id/colorPicker2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                >
+                android:layout_marginRight="8dp"
+                ></com.gravity.oncepayment.Utilities.CircleView>
+            <com.gravity.oncepayment.Utilities.CircleView
+                android:id="@+id/colorPicker3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                ></com.gravity.oncepayment.Utilities.CircleView>
+            <com.gravity.oncepayment.Utilities.CircleView
+                android:id="@+id/colorPicker4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                ></com.gravity.oncepayment.Utilities.CircleView>
+            <com.gravity.oncepayment.Utilities.CircleView
+                android:id="@+id/colorPicker5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                ></com.gravity.oncepayment.Utilities.CircleView>
 
 
 
-            </com.gravity.oncepayment.Utilities.CircleView>
+
 
 
         </LinearLayout>

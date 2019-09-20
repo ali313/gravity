@@ -1,23 +1,21 @@
 package com.gravity.oncepayment;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.gravity.oncepayment.model.pojos.Payment;
-import com.gravity.oncepayment.model.repository.dataSource.localDataSourse.DatabaseHelper;
-import com.gravity.oncepayment.ui.fragment.BagFragment;
-import com.gravity.oncepayment.ui.fragment.TimeLineFragment;
 
 public class MainActivity extends AppCompatActivity
 
-    implements BottomNavigationView.OnNavigationItemSelectedListener
-{
+        implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
 
@@ -27,16 +25,22 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         init();
-
         bottomNavigationView.inflateMenu(R.menu.main_buttom_navigation);
 
-        loadFragment(new BagFragment());
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+
+            }
+        });
+
     }
 
     public void init() {
         bottomNavigationView = findViewById(R.id.bottomNavigation);
-
-
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
@@ -44,32 +48,17 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
 
-            case R.id.Payments:
-                loadFragment(new TimeLineFragment());
+            case R.id.timeline:
                 break;
 
-            case R.id.Report:
-                loadFragment(new BagFragment());
+            case R.id.reports:
                 break;
 
-            case R.id.Wallets:
-                loadFragment(new BagFragment());
+            case R.id.wallets:
                 break;
         }
 
 
-        return false;
-    }
-
-    private boolean loadFragment(Fragment fragment) {
-        //switching fragment
-        if (fragment != null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentContainer, fragment)
-                    .commit();
-            return true;
-        }
         return false;
     }
 }

@@ -14,6 +14,7 @@ import com.gravity.oncepayment.Utilities.CircleView;
 import com.gravity.oncepayment.Utilities.MyBounceInterpolator;
 import com.gravity.oncepayment.model.pojos.Wallet;
 import com.gravity.oncepayment.ui.bottomSheet.AddWalletBottomSheet;
+import com.gravity.oncepayment.viewModel.WalletViewModel;
 
 import java.util.List;
 import java.util.Random;
@@ -112,14 +113,20 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
                         switch (item.getItemId()) {
                             case R.id.delete:
                                 //TODO
-                                // delete item from Wallet
-                                //ViewModelProviders.of( context).get(Wallet.class)
+                                // حذف یک کیف پول
+                                ViewModelProviders.of((FragmentActivity) context).get(WalletViewModel.class).delete(
+                                        wallet
+                                );
                                 break;
                             case R.id.edit:
                                 AddWalletBottomSheet fragment = new AddWalletBottomSheet();
                                 fragment.setUpdateState();
                                 fragment.setWalletId(wallet.getId());
                                 fragment.show(((FragmentActivity)context).getSupportFragmentManager(), "TAG");
+                                break;
+                            case R.id.increaseAmount:
+                                //TODO
+                                // افزایش اعتبار
                                 break;
                         }
                         return false;

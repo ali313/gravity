@@ -10,5 +10,10 @@
         android:title="ویرایش" />
 
 
+    <item
+        android:id="@+id/increaseAmount"
+        android:title="افزایش اعتبار" />
+
+
 
 </menu>

@@ -1,15 +1,10 @@
-package com.gravity.oncepayment.model;
+package com.gravity.oncepayment.model.pojos;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = PaymentTransaction.PAYMENT_TRANSACTION_TABLE_NAME, foreignKeys = @ForeignKey(entity = Payment.class,
-        parentColumns = Payment.ID_KEY,
-        childColumns = PaymentTransaction.PAYMENT_DATE_KEY,
-        onDelete = ForeignKey.CASCADE,
-        onUpdate = ForeignKey.CASCADE))
+@Entity(tableName = PaymentTransaction.PAYMENT_TRANSACTION_TABLE_NAME)
 public class PaymentTransaction {
 
     public static final String PAYMENT_TRANSACTION_TABLE_NAME = "payment_transaction";

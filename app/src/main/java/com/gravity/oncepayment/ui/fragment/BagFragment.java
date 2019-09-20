@@ -4,33 +4,32 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gravity.oncepayment.R;
-import com.gravity.oncepayment.model.Wallet;
+import com.gravity.oncepayment.model.pojos.Wallet;
 import com.gravity.oncepayment.ui.adapter.ad_valet;
+import com.gravity.oncepayment.viewModel.WalletViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BagFragment extends Fragment
-{
+public class BagFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ad_valet adapter;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_bag, container, false);
         init(view);
@@ -39,14 +38,14 @@ public class BagFragment extends Fragment
     }
 
 
-    private void init(View view){
+    private void init(View view) {
 
         recyclerView = view.findViewById(R.id.rv);
 
 
     }
 
-    public void bindRecyclerView(){
+    public void bindRecyclerView() {
         Wallet wallet = new Wallet();
         List<Wallet> myWallet = new ArrayList<>();
 

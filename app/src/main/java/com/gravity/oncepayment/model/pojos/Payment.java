@@ -1,4 +1,4 @@
-package com.gravity.oncepayment.model;
+package com.gravity.oncepayment.model.pojos;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -10,7 +10,7 @@ public class Payment {
     public static final String PAYMENT_TABLE_NAME = "payment_table";
 
     public static final String ID_KEY = "id";
-    public static final String BAG_ID_KEY = "bagId";
+    public static final String WALLET_ID_KEY = "walletId";
     public static final String PRICE_KEY = "price";
     public static final String DESCRIPTION_KEY = "description";
     public static final String TITLE_KEY = "title";
@@ -19,8 +19,8 @@ public class Payment {
     @ColumnInfo(name = ID_KEY)
     @PrimaryKey(autoGenerate = true)
     private int id;
-    @ColumnInfo(name = BAG_ID_KEY)
-    private int bagId;
+    @ColumnInfo(name = WALLET_ID_KEY)
+    private int walletId;
     @ColumnInfo(name = PRICE_KEY)
     private long price;
     @ColumnInfo(name = DESCRIPTION_KEY)
@@ -30,8 +30,8 @@ public class Payment {
     @ColumnInfo(name = PRIORITY_KEY)
     private int priority;
 
-    public Payment(int bagId, long price, String description, String title, int priority) {
-        this.bagId = bagId;
+    public Payment(int walletId, long price, String description, String title, int priority) {
+        this.walletId = walletId;
         this.price = price;
         this.description = description;
         this.title = title;
@@ -46,12 +46,12 @@ public class Payment {
         this.id = id;
     }
 
-    public int getBagId() {
-        return bagId;
+    public int getWalletId() {
+        return walletId;
     }
 
-    public void setBagId(int bagId) {
-        this.bagId = bagId;
+    public void setWalletId(int walletId) {
+        this.walletId = walletId;
     }
 
     public long getPrice() {

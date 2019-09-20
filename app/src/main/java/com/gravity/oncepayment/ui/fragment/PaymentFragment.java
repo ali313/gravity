@@ -41,7 +41,8 @@ public class PaymentFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        int walletId = 0;
+        PaymentFragmentArgs paymentFragmentArgs = PaymentFragmentArgs.fromBundle(getArguments());
+        int walletId = paymentFragmentArgs.getWalletId();
 
         ViewModelProviders.of(this).get(PaymentViewModel.class).getAll(walletId)
                 .observe(this, new Observer<List<Payment>>() {

@@ -12,6 +12,7 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,7 @@ import com.gravity.oncepayment.R;
 import com.gravity.oncepayment.Utilities.CircleView;
 import com.gravity.oncepayment.model.pojos.Wallet;
 import com.gravity.oncepayment.ui.bottomSheet.AddWalletBottomSheet;
+import com.gravity.oncepayment.ui.fragment.WalletFragmentDirections;
 import com.gravity.oncepayment.viewModel.WalletViewModel;
 
 import java.util.Random;
@@ -65,13 +67,14 @@ public class WalletRecyclerViewListAdapter extends ListAdapter<Wallet, WalletRec
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-        public TextView txt_ViewOptions, txt_BagName, txt_amount, txt_trasactionNum;
-        public CircleView view_Color;
+        private TextView txt_ViewOptions, txt_BagName, txt_amount, txt_trasactionNum;
+        private CircleView view_Color;
+        private View view;
 
 
         public CustomViewHolder(View itemView) {
             super(itemView);
-
+            this.view = itemView;
             findView();
         }
 
@@ -96,6 +99,17 @@ public class WalletRecyclerViewListAdapter extends ListAdapter<Wallet, WalletRec
             if (wallet.getAmount() == 0) {
                 txt_amount.setTextColor(0xFFb82525);
             }
+
+            view.setClickable(true);
+            view.setFocusable(true);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    WalletFragmentDirections.WalletsToPaymentsAction action = WalletFragmentDirections.walletsToPaymentsAction(wallet.getId());
+                    Navigation.findNavController(view).navigate(action);
+                }
+            });
 
             txt_ViewOptions.setOnClickListener(new View.OnClickListener() {
                 @Override

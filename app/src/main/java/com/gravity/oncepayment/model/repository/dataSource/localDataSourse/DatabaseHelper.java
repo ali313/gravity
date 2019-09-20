@@ -1,8 +1,12 @@
 package com.gravity.oncepayment.model.repository.dataSource.localDataSourse;
 
+import android.os.AsyncTask;
+
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.gravity.oncepayment.base.App;
 import com.gravity.oncepayment.model.daos.PaymentDao;
@@ -34,4 +38,20 @@ public abstract class DatabaseHelper extends RoomDatabase {
 
         return instance;
     }
+
+    private static RoomDatabase.Callback callback = new Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    return null;
+                }
+            };
+
+            task.execute();
+            super.onCreate(db);
+        }
+    };
 }

@@ -1,8 +1,6 @@
 package com.gravity.oncepayment.ui.fragment;
 
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.telephony.SmsMessage;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +9,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gravity.oncepayment.R;
-import com.gravity.oncepayment.Utilities.datetime.JalaliDate;
 import com.gravity.oncepayment.Utilities.datetime.MCalendar;
 import com.gravity.oncepayment.model.pojos.PaymentTransactionGroup;
 import com.gravity.oncepayment.ui.adapter.TimeLineAdapter;
+import com.gravity.oncepayment.viewModel.PaymentTransactionGroupViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,13 +45,26 @@ public class TimeLineFragment extends Fragment
 
     private void loadList()
     {
-        List<PaymentTransactionGroup> items = getRandomItems(MCalendar.getToday().julianDay - 60, 120, true);
+//        List<PaymentTransactionGroup> items = getRandomItems(MCalendar.getToday().julianDay - 60, 120, true);
+        mAdapter = new TimeLineAdapter(null);
+        ViewModelProviders.of(this)
+                .get(PaymentTransactionGroupViewModel.class)
+                .getAllUpsByDateRange("0", 1000).observe(this, new Observer<List<PaymentTransactionGroup>>()
+        {
+            @Override
+            public void onChanged(List<PaymentTransactionGroup> paymentTransactionGroups)
+            {
+                mAdapter.clear();
+                mAdapter.addItems(paymentTransactionGroups);
+                ctr_recyclerView.setAdapter(mAdapter);
 
+                ctr_recyclerView.scrollToPosition(mAdapter.getTodayPostion());
+            }
+        });
+
+//        List<PaymentTransactionGroup> items =
         ctr_recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        mAdapter = new TimeLineAdapter(items);
-        ctr_recyclerView.setAdapter(mAdapter);
 
-        ctr_recyclerView.scrollToPosition(mAdapter.getTodayPostion());
 //        ctr_recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
 //        {
 //            @Override
@@ -134,7 +147,7 @@ public class TimeLineFragment extends Fragment
                 PaymentTransactionGroup item = new PaymentTransactionGroup();
                 item.setPaymentDate(date);
                 item.setPriority(j);
-                item.setTitle(names[loan]);
+                item.setTitle(" " + fromJd);
                 item.setWalletColor(colors[loan]);
                 item.setWalletId(loan);
 

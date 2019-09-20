@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.gravity.oncepayment.MainActivity;
 import com.gravity.oncepayment.R;
 import com.gravity.oncepayment.Utilities.CircleView;
+import com.gravity.oncepayment.Utilities.TextUtils;
 import com.gravity.oncepayment.model.pojos.Wallet;
 import com.gravity.oncepayment.viewModel.WalletViewModel;
 
@@ -33,6 +34,7 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
     public boolean isAdd = true;
     private TextView txt_typeOperand;
     private int walletId = -1;
+    private Wallet updateWallet;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -48,7 +50,7 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
 
             txt_typeOperand.setText("ویرایش");
 
-            //ViewModelProviders.of(this).get(WalletViewModel.class)
+             updateWallet = ViewModelProviders.of(this).get(WalletViewModel.class).getWallet(this.walletId);
         }
     }
 
@@ -84,23 +86,31 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
 
             case R.id.btn_insert:
 
-            if(isAdd) {
                 String WalletName = Name.getText().toString();
                 int color = colorView.getColor();
 
-                Wallet wallet = new Wallet();
-                wallet.setColor(color);
-                wallet.setName(WalletName);
 
-                ViewModelProviders.of(this).get(WalletViewModel.class).insert(wallet);
+                if(!Name.getText().toString().isEmpty()) {
+                    if (isAdd) {
 
-                this.dismiss();
-            }
-            else{
-                //TODO
-                // insert into table
-            }
 
+                        Wallet wallet = new Wallet();
+                        wallet.setColor(color);
+                        wallet.setName(WalletName);
+
+                        ViewModelProviders.of(this).get(WalletViewModel.class).insert(wallet);
+
+                    } else {
+                        updateWallet.setName(WalletName);
+                        updateWallet.setColor(color);
+                        ViewModelProviders.of(this).get(WalletViewModel.class).update(updateWallet);
+
+                    }
+                    this.dismiss();
+                }
+                else{
+                    Toast.makeText(getContext(), "لطفا نامی برای کیف پول جدید انتخاب کنید!", Toast.LENGTH_SHORT).show();
+                }
             break;
 
             case R.id.colorPicker:

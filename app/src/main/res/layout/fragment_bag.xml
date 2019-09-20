@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_library_add_white"
         android:clickable="true"
-        app:backgroundTint="#fa9f46"
+        app:backgroundTint="#1E4D73"
 
         app:elevation="6dp"
         app:fabCustomSize="64dp"
@@ -31,6 +31,6 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="#bc7b3b" />
+        app:rippleColor="#0E2436" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

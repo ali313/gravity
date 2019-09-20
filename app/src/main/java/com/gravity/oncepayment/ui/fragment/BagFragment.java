@@ -74,7 +74,7 @@ implements View.OnClickListener {
             @Override
             public void onChanged(List<Wallet> wallets) {
                 if(wallets != null) {
-                    Log.d("mohammad", "mohammad1");
+
                     adapter.setWallets(wallets);
 
                 }

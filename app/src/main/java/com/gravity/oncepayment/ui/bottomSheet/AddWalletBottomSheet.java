@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.gravity.oncepayment.MainActivity;
 import com.gravity.oncepayment.R;
 import com.gravity.oncepayment.Utilities.CircleView;
+import com.gravity.oncepayment.Utilities.TextUtils;
 import com.gravity.oncepayment.model.pojos.Wallet;
 import com.gravity.oncepayment.viewModel.WalletViewModel;
 
@@ -84,23 +85,28 @@ public class AddWalletBottomSheet extends BottomSheetDialogFragment
 
             case R.id.btn_insert:
 
-            if(isAdd) {
                 String WalletName = Name.getText().toString();
-                int color = colorView.getColor();
 
-                Wallet wallet = new Wallet();
-                wallet.setColor(color);
-                wallet.setName(WalletName);
 
-                ViewModelProviders.of(this).get(WalletViewModel.class).insert(wallet);
 
-                this.dismiss();
-            }
-            else{
-                //TODO
-                // insert into table
-            }
+                if(!Name.getText().toString().isEmpty()) {
+                    if (isAdd) {
+                        int color = colorView.getColor();
 
+                        Wallet wallet = new Wallet();
+                        wallet.setColor(color);
+                        wallet.setName(WalletName);
+
+                        ViewModelProviders.of(this).get(WalletViewModel.class).insert(wallet);
+                        this.dismiss();
+                    } else {
+                        //TODO
+                        // update into table
+                    }
+                }
+                else{
+                    Toast.makeText(getContext(), "لطفا نامی برای کیف پول جدید انتخاب کنید!", Toast.LENGTH_SHORT).show();
+                }
             break;
 
             case R.id.colorPicker:

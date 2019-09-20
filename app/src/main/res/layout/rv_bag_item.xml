@@ -6,7 +6,7 @@
 
     app:cardElevation="6dp"
     android:layout_width="match_parent"
-    android:layout_height="108dp">
+    android:layout_height="130dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,85 +23,117 @@
         <RelativeLayout
             android:background="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
+
+
+                        <TextView
+                            android:id="@+id/txt_ViewOptions"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerHorizontal="true"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingTop="7dp"
+
+                            android:text="&#8942;"
+                            android:textAppearance="?android:textAppearanceLarge" />
+
+
+
+
+            <com.gravity.oncepayment.Utilities.MTextView
+                android:id="@+id/txt_WalletName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+
+
+
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:text="کیف پول اول">
+
+            </com.gravity.oncepayment.Utilities.MTextView>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:background="#0f0">
+                android:layout_height="2dp"
+                android:background="#0f0"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/txt_WalletName">
 
             </View>
 
 
-            <TextView
-                android:id="@+id/txt_ViewOptions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerHorizontal="true"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="7dp"
-
-                android:text="&#8942;"
-                android:textAppearance="?android:textAppearanceLarge" />
-
-            <com.gravity.oncepayment.Utilities.FontAwesome
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-
-                android:textColor="#2E7D32"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-
-                android:text="&#xf0d6;"
-                android:textSize="20dp">
-
-            </com.gravity.oncepayment.Utilities.FontAwesome>
-
             <com.gravity.oncepayment.Utilities.MTextView
-                android:id="@+id/txt_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-
-
-                android:layout_marginRight="34dp"
-                android:layout_marginTop="5dp"
-                android:text="10000">
+                            android:id="@+id/txt_AmountText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_WalletName"
+                            android:textSize="13dp"
+                            android:layout_marginTop="13dp"
+                            android:gravity="center"
+                            android:text="موجودی">
 
             </com.gravity.oncepayment.Utilities.MTextView>
 
             <com.gravity.oncepayment.Utilities.MTextView
-                android:id="@+id/txt_trasactionNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="6dp"
-                android:layout_marginTop="8dp"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@id/txt_amount"
-                android:text="6 #">
+                            android:id="@+id/txt_amount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_AmountText"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="10000">
 
-            </com.gravity.oncepayment.Utilities.MTextView>
+                        </com.gravity.oncepayment.Utilities.MTextView>
 
-            <com.gravity.oncepayment.Utilities.MTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_alignParentEnd="true"
-                android:id="@+id/txt_BagName"
-                android:layout_below="@+id/txt_trasactionNum"
-                android:text="کیف پول اول"
-                >
+<!--            <com.gravity.oncepayment.Utilities.FontAwesome-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_alignParentRight="true"-->
 
-            </com.gravity.oncepayment.Utilities.MTextView>
+<!--                android:textColor="#2E7D32"-->
+<!--                android:layout_marginRight="8dp"-->
+<!--                android:layout_marginTop="8dp"-->
+
+<!--                android:text="&#xf0d6;"-->
+<!--                android:textSize="20dp">-->
+
+<!--            </com.gravity.oncepayment.Utilities.FontAwesome>-->
+
+<!--            <com.gravity.oncepayment.Utilities.MTextView-->
+<!--                android:id="@+id/txt_amount"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_alignParentRight="true"-->
+
+
+<!--                android:layout_marginRight="34dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:text="10000">-->
+
+<!--            </com.gravity.oncepayment.Utilities.MTextView>-->
+
+<!--            <com.gravity.oncepayment.Utilities.MTextView-->
+<!--                android:id="@+id/txt_trasactionNum"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginRight="6dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_below="@id/txt_amount"-->
+<!--                android:text="6 #">-->
+
+<!--            </com.gravity.oncepayment.Utilities.MTextView>-->
+
+
 
 
         </RelativeLayout>

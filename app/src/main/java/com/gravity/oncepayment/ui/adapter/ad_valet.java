@@ -41,9 +41,9 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull final CustomViewHolder holder, int position) {
 
-        //Wallet wallet = this.wallets.get(position);
+        Wallet wallet = this.wallets.get(position);
 
-        holder.txt_BagName.setText("mohammad");
+        holder.txt_BagName.setText("کیف پول");
 
         holder.txt_ViewOptions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,9 +101,9 @@ public class ad_valet extends RecyclerView.Adapter<ad_valet.CustomViewHolder>{
         }
         private void findView(){
             txt_ViewOptions = itemView.findViewById(R.id.txt_ViewOptions);
-            txt_BagName = itemView.findViewById(R.id.txt_BagName);
-            txt_amount = itemView.findViewById(R.id.txt_amount);
-            txt_trasactionNum = itemView.findViewById(R.id.txt_trasactionNum);
+            txt_BagName = itemView.findViewById(R.id.txt_WalletName);
+//            txt_amount = itemView.findViewById(R.id.txt_amount);
+//            txt_trasactionNum = itemView.findViewById(R.id.txt_trasactionNum);
         }
     }
 
